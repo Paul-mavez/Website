@@ -1,7 +1,7 @@
 // Detect correct path
 const path = window.location.pathname.includes("/Pages/")
   ? "../products.json"
-  : "./products.json";
+  : "/products.json";
 
 fetch(path)
   .then(res => res.json())
