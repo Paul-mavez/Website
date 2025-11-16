@@ -7,15 +7,24 @@ class SearchManager {
     this.searchResultsBody = document.getElementById('searchResultsBody');
     this.searchOverlay = document.getElementById('searchOverlay');
 
-    this.products = window.data || {};
-    this.allProducts = [
-      ...(this.products.pump || []),
-      ...(this.products.feeding || []),
-      ...(this.products.baby || []),
-      ...(this.products.mama || [])
-    ];
+    this.allProducts = [];
 
-    this.setupEvents();
+    this.waitForData().then(() => this.setupEvents());
+  }
+
+  async waitForData() {
+    // Wait until window.data is available (products.js loaded)
+    while (!window.data) {
+      await new Promise(r => setTimeout(r, 50));
+    }
+
+    const products = window.data;
+    this.allProducts = [
+      ...(products.pump || []),
+      ...(products.feeding || []),
+      ...(products.baby || []),
+      ...(products.mama || [])
+    ];
   }
 
   setupEvents() {
@@ -76,5 +85,5 @@ class SearchManager {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (window.data) new SearchManager();
+  new SearchManager();
 });
