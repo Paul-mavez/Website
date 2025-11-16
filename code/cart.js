@@ -70,6 +70,58 @@ class CartManager {
     }
 
  
+        // ✅ Universal Flying Image Animation
+showAddToCartAnimation(event, imgSrc, productImgElement = null) {
+    const productImg = productImgElement || event.target.closest('.product-card')?.querySelector('img');
+    const cartBtn = document.getElementById('cartBtn');
+    if (!productImg || !cartBtn) return;
+
+    const flyingImage = document.createElement('div');
+    flyingImage.className = 'flying-image';
+    flyingImage.innerHTML = `<img src="${imgSrc}" alt="Flying Image">`;
+
+    const productRect = productImg.getBoundingClientRect();
+    const cartRect = cartBtn.getBoundingClientRect();
+
+    flyingImage.style.cssText = `
+        position: fixed;
+        left: ${productRect.left}px;
+        top: ${productRect.top}px;
+        width: ${productRect.width}px;
+        height: ${productRect.height}px;
+        z-index: 10000;
+        pointer-events: none;
+        transition: all 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+        border-radius: 50%; /* changed from 8px to 50% for circle */
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        
+    `;
+    flyingImage.querySelector('img').style.cssText = `
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%; /* ensures the image itself is circular */
+    `;
+
+    document.body.appendChild(flyingImage);
+
+    setTimeout(() => {
+        flyingImage.style.left = `${cartRect.left + cartRect.width / 2 - productRect.width / 4}px`;
+        flyingImage.style.top = `${cartRect.top + cartRect.height / 2 - productRect.height / 4}px`;
+        flyingImage.style.width = `${productRect.width / 2}px`;
+        flyingImage.style.height = `${productRect.height / 2}px`;
+        flyingImage.style.opacity = '0.6';
+        flyingImage.style.transform = 'rotate(20deg) scale(0.5)';
+    }, 50);
+
+    setTimeout(() => {
+        document.body.removeChild(flyingImage);
+        cartBtn.classList.add('cart-bounce');
+        setTimeout(() => cartBtn.classList.remove('cart-bounce'), 300);
+    }, 850);
+}
+
 
 
         // Toast Notification
