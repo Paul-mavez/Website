@@ -1,4 +1,4 @@
-// search.js
+// search.js - Works for index.html and Pages/*.html
 class SearchManager {
   constructor() {
     this.searchInput = document.getElementById('searchInput');
@@ -6,119 +6,79 @@ class SearchManager {
     this.searchResultsSidebar = document.getElementById('searchResultsSidebar');
     this.searchResultsBody = document.getElementById('searchResultsBody');
     this.searchOverlay = document.getElementById('searchOverlay');
-    this.closeSearchResults = document.getElementById('closeSearchResults');
 
-    this.allProducts = [];
-
-    // Dynamically set base URL
-    this.BASE_URL = window.location.pathname.includes('index.html') || window.location.pathname === '/' 
-      ? './'
-      : '../';
-
-    this.init();
-  }
-
-  init() {
-    this.loadAllProducts();
-
-    if (this.searchInput) {
-      this.searchInput.addEventListener('input', this.handleSearch.bind(this));
-      this.searchInput.addEventListener('focus', this.handleFocus.bind(this));
-      this.searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') this.performSearch(); });
-    }
-
-    if (this.searchIcon) this.searchIcon.addEventListener('click', this.toggleSearchSidebar.bind(this));
-    if (this.closeSearchResults) this.closeSearchResults.addEventListener('click', this.hideSearchResults.bind(this));
-    if (this.searchOverlay) this.searchOverlay.addEventListener('click', this.hideSearchResults.bind(this));
-
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') this.hideSearchResults(); });
-    document.addEventListener('click', e => {
-      if (!this.searchInput?.contains(e.target) &&
-          !this.searchResultsSidebar.contains(e.target) &&
-          !this.searchIcon.contains(e.target)) {
-        this.hideSearchResults();
-      }
-    });
-  }
-
-  loadAllProducts() {
+    this.products = window.data || {};
     this.allProducts = [
-      ...(window.breastPumpProducts || []),
-      ...(window.breastfeedingProducts || []),
-      ...(window.babyProducts || []),
-      ...(window.mamaProducts || []),
+      ...(this.products.pump || []),
+      ...(this.products.feeding || []),
+      ...(this.products.baby || []),
+      ...(this.products.mama || [])
     ];
 
-    if (this.allProducts.length === 0) {
-      console.warn("⚠️ No global products found. Check if products.js loaded first.");
-    }
+    this.setupEvents();
   }
 
-  handleFocus() { if (this.searchInput.value.trim().length > 0) this.performSearch(); }
+  setupEvents() {
+    if (!this.searchInput) return;
 
-  handleSearch(e) {
-    const query = e.target.value.trim();
-    if (query.length > 0) this.performSearch();
-    else this.hideSearchResults();
-  }
-
-  toggleSearchSidebar() {
-    const isActive = this.searchResultsSidebar.classList.contains('active');
-    if (isActive) this.hideSearchResults();
-    else { this.showSearchResults(); this.searchInput?.focus(); }
+    this.searchInput.addEventListener('input', () => this.performSearch());
+    this.searchIcon.addEventListener('click', () => this.showSidebar());
+    document.getElementById('closeSearchResults')?.addEventListener('click', () => this.hideSidebar());
+    this.searchOverlay?.addEventListener('click', () => this.hideSidebar());
   }
 
   performSearch() {
-    const query = this.searchInput?.value.trim().toLowerCase() || '';
-    if (!query) { this.hideSearchResults(); return; }
+    const query = this.searchInput.value.toLowerCase().trim();
+    this.searchResultsBody.innerHTML = '';
 
-    const results = this.allProducts.filter(p =>
-      p.title.toLowerCase().includes(query) ||
-      (p.category && p.category.toLowerCase().includes(query))
-    );
-
-    this.displaySearchResults(results, query);
-    this.showSearchResults();
-  }
-
-  displaySearchResults(results, query) {
-    if (results.length === 0) {
-      this.searchResultsBody.innerHTML = `
-        <div class="no-results">
-          <i class="fas fa-search"></i>
-          <h5>No products found</h5>
-          <p>No results found for "<strong>${query}</strong>"</p>
-          <p class="text-muted">Try another keyword</p>
-        </div>
-      `;
+    if (!query) {
+      this.hideSidebar();
       return;
     }
 
-    const resultsHTML = results.map(p => `
-      <a href="${this.BASE_URL}Pages/product-detail.html?id=${p.id}&category=${p.category || 'pump'}" class="search-result-item">
-        <img src="${this.BASE_URL}${p.img}" alt="${p.title}" class="search-result-img">
-        <div class="search-result-info">
-          <div class="search-result-title">${p.title}</div>
-          <div class="search-result-price">${p.price}</div>
-          <div class="search-result-category">${p.category || 'Uncategorized'}</div>
-        </div>
-        <i class="fas fa-chevron-right text-muted"></i>
-      </a>
-    `).join('');
+    const results = this.allProducts.filter(p => p.title.toLowerCase().includes(query));
 
-    this.searchResultsBody.innerHTML = `
-      <div class="mb-3">
-        <p class="text-muted">Found ${results.length} product${results.length > 1 ? 's' : ''} for "<strong>${query}</strong>"</p>
-      </div>
-      ${resultsHTML}
-    `;
+    if (results.length === 0) {
+      this.searchResultsBody.innerHTML = '<p class="text-muted">No products found.</p>';
+    } else {
+      results.forEach(p => {
+        // Fix image path for index.html
+        let imgPath = p.img;
+        if (!window.location.pathname.includes("/Pages/")) {
+          imgPath = imgPath.replace("../", "");
+        }
+
+        const linkPath = `${window.location.pathname.includes("/Pages/") ? "" : "Pages/"}product-detail.html?id=${p.id}&category=${p.category}`;
+        const item = document.createElement('div');
+        item.className = 'search-result-item d-flex align-items-center mb-2';
+        item.innerHTML = `
+          <a href="${linkPath}" class="d-flex align-items-center text-decoration-none text-dark">
+            <img src="${imgPath}" alt="${p.title}" class="me-2" style="width:50px; height:50px; object-fit:cover; border-radius:5px;">
+            <div>
+              <div>${p.title}</div>
+              <small class="text-muted">${p.price}</small>
+            </div>
+          </a>
+        `;
+        this.searchResultsBody.appendChild(item);
+      });
+    }
+
+    this.showSidebar();
   }
 
-  showSearchResults() { this.searchResultsSidebar.classList.add('active'); this.searchOverlay.classList.add('active'); }
-  hideSearchResults() { this.searchResultsSidebar.classList.remove('active'); this.searchOverlay.classList.remove('active'); }
+  showSidebar() {
+    this.searchResultsSidebar?.classList.add('active');
+    this.searchOverlay?.classList.add('active');
+  }
+
+  hideSidebar() {
+    this.searchResultsSidebar?.classList.remove('active');
+    this.searchOverlay?.classList.remove('active');
+  }
 }
 
-// Initialize
+// Initialize search after products are loaded
 document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => new SearchManager(), 100);
+  if (window.data) new SearchManager();
 });
