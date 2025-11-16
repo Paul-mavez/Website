@@ -1,0 +1,263 @@
+/* back button */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+    color: skyblue;
+    border: 2px solid skyblue;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-back i {
+    font-size: 14px;
+}
+
+.btn-back:hover {
+    background-color: skyblue;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+/* Product Page Styles */
+.product-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;  
+}
+
+.brand {
+    color: skyblue;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.payment-option {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 1rem;
+}
+
+.payment-option i {
+    color: skyblue;
+    margin-right: 8px;
+}
+
+.delivery-info {
+    background-color: #e8f4f8;
+    border-left: 4px solid skyblue;
+    padding: 10px 15px;
+    margin-bottom: 1.5rem;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.quantity-input {
+    width: 60px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+}
+
+.btn-primary-custom {
+    background-color: skyblue;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+    background-color: deepskyblue;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-custom {
+    border: 2px solid skyblue;
+    color: skyblue;
+    background: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+    background-color: skyblue;
+    color: white;
+}
+
+.product-features {
+    margin-top: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    color: skyblue;
+    margin-right: 10px;
+    font-size: 1.2rem;
+    margin-top: 3px;
+}
+
+.product-image-container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.product-image {
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.03);
+}
+
+.product-thumbnail {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-thumbnail:hover {
+    border-color: skyblue !important;
+}
+
+
+.image-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ff7bac;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.warranty-badge {
+    display: inline-block;
+    background: #e8f4f8;
+    color: skyblue;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.specs-table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.specs-table td {
+    padding: 10px 0;
+}
+
+.specs-table td:first-child {
+    font-weight: 600;
+    width: 40%;
+}
+
+.customer-reviews {
+    margin-top: 3rem;
+}
+
+.review-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.reviewer-name {
+    font-weight: 600;
+}
+
+.review-date {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.rating {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+.related-products {
+    margin-top: 4rem;
+}
+
+.section-title {
+    color: skyblue;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+   
+}

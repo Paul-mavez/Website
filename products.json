@@ -1,0 +1,269 @@
+{
+  "pump": [
+    {
+      "id": 1,
+      "title": "Spectra Wearable Breast Pump – 24mm",
+      "price": "₱8,995.00",
+      "img": "../images/pump1.webp",
+      "category": "pump"
+    },
+    {
+      "id": 2,
+      "title": "Spectra S1 Plus Hospital Grade Double Electric Rechargeable Breast Pump",
+      "price": "₱16,795.00",
+      "img": "../images/pump2.webp",
+      "category": "pump"
+    },
+    {
+      "id": 3,
+      "title": "Spectra Dual Compact Rechargeable Double Electric Breast Pump",
+      "price": "₱8,995.00",
+      "img": "../images/pump3.webp",
+      "category": "pump"
+    },
+    {
+      "id": 4,
+      "title": "Spectra Manual Wide Neck Breast Pump",
+      "price": "₱1,195.00",
+      "img": "../images/pump4.webp",
+      "category": "pump"
+    },
+    {
+      "id": 5,
+      "title": "Haakaa Gen 2 Silicone Breast Pump 100ml",
+      "price": "₱980.00",
+      "img": "../images/pump5.webp",
+      "category": "pump"
+    },
+    {
+      "id": 6,
+      "title": "Haakaa Gen 3 Multifunctional Silicone Breast Pump 250ml - Peach/Nude",
+      "price": "₱1,795.00",
+      "img": "../images/pump6.webp",
+      "category": "pump"
+    },
+    {
+      "id": 7,
+      "title": "Spectra Wide Accessory/Breastkit Set",
+      "price": "₱1,925.00",
+      "img": "../images/pump7.webp",
+      "category": "pump"
+    }
+  ],
+  "feeding": [
+    {
+      "id": 1,
+      "title": "Spectra Flange Pair",
+      "price": "₱900.00",
+      "img": "../images/feeding1.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 2,
+      "title": "Maymom Wide-mouth Flange w/ 1 Valve and 1 Membrane",
+      "price": "₱650.00",
+      "img": "../images/feeding2.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 3,
+      "title": "Spectra Breastmilk Storage Bottle (150ml/5oz) - Set of 5",
+      "price": "₱695.00",
+      "img": "../images/feeding3.jpg",
+      "category": "feeding"
+    },
+    {
+      "id": 4,
+      "title": "Spectra Wide Accessory/Breastkit Set",
+      "price": "₱1,925.00",
+      "img": "../images/feeding4.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 5,
+      "title": "Spectra Flange Pair",
+      "price": "₱900.00",
+      "img": "../images/feeding5.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 6,
+      "title": "Spectra White Valves – Pair (compatible with all Spectra Double Electric Breast Pumps)",
+      "price": "₱500.00",
+      "img": "../images/feeding6.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 7,
+      "title": "Spectra Backflow Diaphragm - Lid type (pair)",
+      "price": "₱295.00",
+      "img": "../images/feeding7.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 8,
+      "title": "Spectra Tubing - Pair",
+      "price": "₱795.00",
+      "img": "../images/feeding8.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 9,
+      "title": "Baby Brezza Universal Descaler Tablet",
+      "price": "₱999.00",
+      "img": "../images/feeding9.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 10,
+      "title": "Lunabebe Transparent Breastmilk Storage Bags 120 ML - 30s",
+      "price": "₱120.00",
+      "img": "../images/feeding10.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 11,
+      "title": "Materni Flowcup Set (Flow Cup, Locking Ring, Bottle with Cap) - Purple",
+      "price": "₱495.00",
+      "img": "../images/feeding11.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 12,
+      "title": "Milk Easy Breast Milk Storage Bags 30's",
+      "price": "₱280.00",
+      "img": "../images/feeding12.webp",
+      "category": "feeding"
+    },
+    {
+      "id": 13,
+      "title": "Unimom Cup Feeder / Feeding Cup",
+      "price": "₱50.00",
+      "img": "../images/feeding13.webp",
+      "category": "feeding"
+    }
+  ],
+  "baby": [
+    {
+      "id": 1,
+      "title": "Bao Bei PH Coby Frogsuit - Safari",
+      "price": "₱338.00",
+      "img": "../images/baby1.webp",
+      "category": "baby"
+    },
+    {
+      "id": 2,
+      "title": "Bao Bei PH Coby Frogsuit - Gray Chevron",
+      "price": "₱338.00",
+      "img": "../images/baby2.webp",
+      "category": "baby"
+    },
+    {
+      "id": 3,
+      "title": "Little Steps 3-Piece Bodysuit Set in Grey Giraffe",
+      "price": "₱120.00",
+      "img": "../images/baby3.webp",
+      "category": "baby"
+    },
+    {
+      "id": 4,
+      "title": "Bao Bei PH Coby Frogsuit - Safari",
+      "price": "₱338.00",
+      "img": "../images/baby4.webp",
+      "category": "baby"
+    },
+    {
+      "id": 5,
+      "title": "BestCare Onesie 3 Pieces Set",
+      "price": "₱450.00",
+      "img": "../images/baby5.webp",
+      "category": "baby"
+    },
+    {
+      "id": 6,
+      "title": "Yomomma 100% Compostable Diaper Bags",
+      "price": "₱280.00",
+      "img": "../images/baby6.webp",
+      "category": "baby"
+    },
+    {
+      "id": 7,
+      "title": "Waterwipes Biodegradable Original 60's - 4 pcs",
+      "price": "₱860.00",
+      "img": "../images/baby7.webp",
+      "category": "baby"
+    }
+  ],
+  "mama": [
+    {
+      "id": 1,
+      "title": "Conceive Plus Fertility Lubricant 75ml",
+      "price": "₱1,390.00",
+      "img": "../images/mama1.webp",
+      "category": "mama"
+    },
+    {
+      "id": 2,
+      "title": "Carry-on Baby Maternity Lift and Support Leggings Black",
+      "price": "₱1,190.00",
+      "img": "../images/mama2.webp",
+      "category": "mama"
+    },
+    {
+      "id": 3,
+      "title": "Mama Blends Medical Grade Compression Socks - Black",
+      "price": "₱588.00",
+      "img": "../images/mama3.webp",
+      "category": "mama"
+    },
+    {
+      "id": 4,
+      "title": "Carry-on Baby Postpartum Tummy Control Biker Shorts Beige",
+      "price": "₱990.00",
+      "img": "../images/mama4.webp",
+      "category": "mama"
+    },
+    {
+      "id": 5,
+      "title": "Carry-on Baby Postpartum Tummy Control Belly Wrap Black",
+      "price": "₱1,950.00",
+      "img": "../images/mama5.webp",
+      "category": "mama"
+    },
+    {
+      "id": 6,
+      "title": "Conceive Plus Fertility Lubricant 75ml",
+      "price": "₱1,390.00",
+      "img": "../images/mama6.webp",
+      "category": "mama"
+    },
+    {
+      "id": 7,
+      "title": "Carry-on Baby Maternity Lift and Support Leggings Black",
+      "price": "₱1,190.00",
+      "img": "../images/mama7.webp",
+      "category": "mama"
+    },
+    {
+      "id": 8,
+      "title": "Mama Blends Medical Grade Compression Socks - Black",
+      "price": "₱588.00",
+      "img": "../images/mama8.webp",
+      "category": "mama"
+    },
+    {
+      "id": 9,
+      "title": "Carry-on Baby Postpartum Tummy Control Biker Shorts Beige",
+      "price": "₱990.00",
+      "img": "../images/mama9.webp",
+      "category": "mama"
+    },
+    {
+      "id": 10,
+      "title": "Carry-on Baby Postpartum Tummy Control Belly Wrap Black",
+      "price": "₱1,950.00",
+      "img": "../images/mama10.webp",
+      "category": "mama"
+    }
+  ]
+}
