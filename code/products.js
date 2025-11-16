@@ -1,5 +1,10 @@
-// products.js - Updated to support productModal.js + global arrays for search.js
-fetch("../products.json")
+// products.js - Updated to work for index.html and /Pages/*.html
+const getProductsPath = () => {
+  // If current page is inside /Pages/ folder, go one level up
+  return window.location.pathname.includes("/Pages/") ? "../products.json" : "products.json";
+};
+
+fetch(getProductsPath())
   .then(res => res.json())
   .then(products => {
     // ✅ Store globally (for search.js)
@@ -16,22 +21,26 @@ fetch("../products.json")
 
     // Helper function to create product cards
     function createProductCard(p, category) {
+      // Fix image path if needed (remove ../ if on index.html)
+      let imgPath = p.img;
+      if (!window.location.pathname.includes("/Pages/")) {
+        imgPath = imgPath.replace("../", "");
+      }
+
       const card = document.createElement('div');
       card.className = 'col-6 col-md-3';
 
       card.innerHTML = `
         <div class="card product-card" data-id="${p.id}" data-category="${category}">
           <div class="product-image">
-            <!-- Make image clickable to go to product detail -->
-            <a href="../Pages/product-detail.html?id=${p.id}&category=${category}" style="display: block;">
-              <img src="${p.img}" alt="${p.title}">
+            <a href="${window.location.pathname.includes("/Pages/") ? "" : "Pages/"}product-detail.html?id=${p.id}&category=${category}" style="display: block;">
+              <img src="${imgPath}" alt="${p.title}">
             </a>
             <button class="add-to-cart">
               <i class="fas fa-cart-plus"></i> Add to Cart
             </button>
           </div>
-          <!-- Make title clickable too -->
-          <a href="../Pages/product-detail.html?id=${p.id}&category=${category}" class="product-title">
+          <a href="${window.location.pathname.includes("/Pages/") ? "" : "Pages/"}product-detail.html?id=${p.id}&category=${category}" class="product-title">
             ${p.title}
           </a>
           <p class="product-price">${p.price}</p>
