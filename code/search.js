@@ -13,7 +13,7 @@ class SearchManager {
   }
 
   async waitForData() {
-    // Wait until window.data is available (products.js loaded)
+    // Wait until products.js has loaded window.data
     while (!window.data) {
       await new Promise(r => setTimeout(r, 50));
     }
@@ -48,26 +48,35 @@ class SearchManager {
     const results = this.allProducts.filter(p => p.title.toLowerCase().includes(query));
 
     if (results.length === 0) {
-      this.searchResultsBody.innerHTML = '<p class="text-muted">No products found.</p>';
+      this.searchResultsBody.innerHTML = '<p class="text-muted text-center my-3">No products found.</p>';
     } else {
+      const resultsContainer = document.createElement('div');
+      resultsContainer.className = 'row g-2'; // grid for spacing
+
       results.forEach(p => {
+        // Fix image paths for index.html vs Pages/*.html
         let imgPath = p.img;
         if (!window.location.pathname.includes("/Pages/")) imgPath = imgPath.replace("../", "");
 
         const linkPath = `${window.location.pathname.includes("/Pages/") ? "" : "Pages/"}product-detail.html?id=${p.id}&category=${p.category}`;
-        const item = document.createElement('div');
-        item.className = 'search-result-item d-flex align-items-center mb-2';
-        item.innerHTML = `
-          <a href="${linkPath}" class="d-flex align-items-center text-decoration-none text-dark">
-            <img src="${imgPath}" alt="${p.title}" class="me-2" style="width:50px; height:50px; object-fit:cover; border-radius:5px;">
-            <div>
-              <div>${p.title}</div>
+
+        const col = document.createElement('div');
+        col.className = 'col-12';
+
+        col.innerHTML = `
+          <a href="${linkPath}" class="d-flex align-items-center text-decoration-none text-dark p-2 border rounded hover-shadow">
+            <img src="${imgPath}" alt="${p.title}" class="me-3" style="width:60px; height:60px; object-fit:cover; border-radius:5px;">
+            <div class="flex-grow-1">
+              <div class="fw-semibold">${p.title}</div>
               <small class="text-muted">${p.price}</small>
             </div>
           </a>
         `;
-        this.searchResultsBody.appendChild(item);
+
+        resultsContainer.appendChild(col);
       });
+
+      this.searchResultsBody.appendChild(resultsContainer);
     }
 
     this.showSidebar();
