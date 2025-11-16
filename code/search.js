@@ -1,4 +1,4 @@
-// search.js - Works for index.html and Pages/*.html
+// search.js
 class SearchManager {
   constructor() {
     this.searchInput = document.getElementById('searchInput');
@@ -42,11 +42,8 @@ class SearchManager {
       this.searchResultsBody.innerHTML = '<p class="text-muted">No products found.</p>';
     } else {
       results.forEach(p => {
-        // Fix image path for index.html
         let imgPath = p.img;
-        if (!window.location.pathname.includes("/Pages/")) {
-          imgPath = imgPath.replace("../", "");
-        }
+        if (!window.location.pathname.includes("/Pages/")) imgPath = imgPath.replace("../", "");
 
         const linkPath = `${window.location.pathname.includes("/Pages/") ? "" : "Pages/"}product-detail.html?id=${p.id}&category=${p.category}`;
         const item = document.createElement('div');
@@ -78,7 +75,6 @@ class SearchManager {
   }
 }
 
-// Initialize search after products are loaded
 document.addEventListener('DOMContentLoaded', () => {
   if (window.data) new SearchManager();
 });
