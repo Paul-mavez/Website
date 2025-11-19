@@ -1,8 +1,4 @@
 
-
-/* ===========================
-   🛍️ Product Cards - GLASS STYLE
-=========================== */
 .product-card {
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius);
